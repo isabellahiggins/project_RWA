@@ -26,15 +26,64 @@ export async function GET(req, res) {
 
 
 
+ // =================================================
+
+  const { MongoClient } = require('mongodb');
+
+
+  const url = 'mongodb://root:example@localhost:27017/';
+
+  const client = new MongoClient(url);
+
  
 
+ 
 
-  // database call goes here
+  const dbName = 'app'; // database name
+
+
+  await client.connect();
+
+  console.log('Connected successfully to server');
+
+  const db = client.db(dbName);
+
+  const collection = db.collection('login'); // collection name
+
+
+
+  const findResult = await collection.find({"username": "sample@test.com"}).toArray();
+
+  console.log('Found documents =>', findResult);
+
+
+  let valid = false
+
+  if(findResult.length >0 ){
+
+          valid = true;
+
+          console.log("login valid")
+
+  } else {
+
+
+        valid = false;
+
+        console.log("login invalid")
+
+  }
+
+
+
+ //==========================================================
+
+
 
 
   // at the end of the process we need to send something back.
 
-  return Response.json({ "data":"valid" })
+  return Response.json({ "data":"" + valid + ""})
 
 }
 

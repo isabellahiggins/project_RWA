@@ -20,14 +20,14 @@ export default function Home() {
   const [messageType, setMessageType] = React.useState('success');
 
 //Javascript
-  const handleSubmit = (event) => {
-    console.log("handling submit");
+const handleSubmit = (event) => {
+  console.log("handling submit");
 
-  //prevent defalt function call is to make sure browser doesn't refresh the page
-  event.preventDefault();
+//prevent defalt function call is to make sure browser doesn't refresh the page
+event.preventDefault();
 
-  //get data from form and store it into const dara
-  const data = new FormData(event.currentTarget);
+//get data from form and store it into const dara
+const data = new FormData(event.currentTarget);
 
 //data.get to get the email and pass variables from the form data
   let email = data.get('email')
@@ -52,8 +52,8 @@ export default function Home() {
 //async means it will run by itself and not hold up other code
 async function runDBCallAsync(url) {
 
-    const res = await fetch(url);
-    const data = await res.json();
+  const res = await fetch(url);
+  const data = await res.json();
 
   if(data.success){
     setMessage(data.message);
@@ -70,7 +70,6 @@ async function runDBCallAsync(url) {
     <Container maxWidth="sm">
     <Box sx={{ height: '100vh' }} >
       {message && <Alert severity={messageType}>{message}</Alert>}
-
     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
 
     <TextField margin="normal"
@@ -139,18 +138,19 @@ async function runDBCallAsync(url) {
       ></TextField>
 
  <FormControlLabel
-      control={<Checkbox value="remember" color="primary" />}
+      control={<Checkbox value="remember" sx={{ color: 'rgb(197, 40, 61)', '&.Mui-checked': { color: 'rgb(255, 200, 87)'} }} />}
       label="Remember me"
 ></FormControlLabel>
+
 
 
     <Button
       type="submit"
       fullWidth
       variant="contained"
-      sx={{ mt: 3, mb: 2 }}
+      sx={{ mt: 3, mb: 2, bgcolor: 'rgb(197, 40, 61)' }}
     >
-      Register
+      Create Account
     </Button>
     </Box>
   </Box>

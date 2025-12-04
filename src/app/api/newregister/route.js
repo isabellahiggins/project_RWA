@@ -60,4 +60,5 @@ if(pass != confirmPass){
 
   //database call goes here at the end of the process we need to send something back.
   return Response.json({ success: true, message: "Registration completed successfuly" });
+
 }

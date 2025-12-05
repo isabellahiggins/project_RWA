@@ -14,7 +14,6 @@ import Box from '@mui/material/Box';
 import Image from 'next/image';
 import { Typography } from '@mui/material';
 
-
 //main function for the main, all code goes here
 export default function Home() {
 //Javascript
@@ -59,14 +58,23 @@ async function runDBCallAsync(url) {
     <Container maxWidth="sm">
     <Box sx={{ height: '100vh' }} >
 
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
       <img src="/images/mcdonaldlogo.png" alt="logo" width={80} height={80}/>
-      <Typography component="h1" variant="h5" sx={{ color: 'rgb(197, 40, 61)' }}>
-       Sign In Below!
+
+
+      <Typography component="h1" variant="h3" sx={{ color: 'rgb(197, 40, 61)' }}>
+         Welcome Back!
+      </Typography>
+    </Box>
+      <Typography component="h3" variant="h5" sx={{ color: 'rgb(197, 40, 61)' }}>
+       Sign In Below
       </Typography>
 
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, border: '1px solid rgb(197, 40, 61)', borderRadius: '6px', p: 2, backgroundColor: 'transparent' }} >
+
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, border: '1px solid #255F85',  borderRadius: '6px', p: 2, backgroundColor:'#481D24' }} >
 
     <TextField
+    sx={{backgroundColor: 'white', borderRadius: 1 }}
       margin="normal" 
       required
       fullWidth
@@ -79,6 +87,7 @@ async function runDBCallAsync(url) {
     />
 
     <TextField
+    sx={{backgroundColor: 'white', borderRadius: 1 }}
       margin="normal"
       required
       fullWidth
@@ -92,8 +101,8 @@ async function runDBCallAsync(url) {
 
 
     <FormControlLabel
-      control={<Checkbox value="remember" sx={{ color: 'rgb(197, 40, 61)', '&.Mui-checked': { color: 'rgb(255, 200, 87)'} }} />}
-      label="Remember me"
+      control={<Checkbox value="remember" sx={{ color: 'rgb(197, 40, 61)', '&.Mui-checked': { color: '#255F85'} }} />}
+      label="Remember me" sx={{ color: 'rgb(197, 40, 61)' }}
     ></FormControlLabel>
 
     <Button

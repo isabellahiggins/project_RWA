@@ -11,6 +11,7 @@ import Link from '@mui/material/Link';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
+import { Typography } from '@mui/material';
 
 
 //main function for the main, all code goes here
@@ -70,9 +71,25 @@ async function runDBCallAsync(url) {
     <Container maxWidth="sm">
     <Box sx={{ height: '100vh' }} >
       {message && <Alert severity={messageType}>{message}</Alert>}
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+  
+   <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+      <img src="/images/mcdonaldlogo.png" alt="logo" width={80} height={80}/>
 
-    <TextField margin="normal"
+
+      <Typography component="h1" variant="h3" sx={{ color: 'rgb(197, 40, 61)' }}>
+         Welcome!
+      </Typography>
+    </Box>
+      <Typography component="h3" variant="h5" sx={{ color: 'rgb(197, 40, 61)' }}>
+       Sign up below
+      </Typography>
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, border: '1px solid #fafafa',  borderRadius: '6px', p: 2, backgroundColor:'#481D24' }} >
+
+
+    <TextField 
+    sx={{backgroundColor: 'white', borderRadius: 1, "&.MuiOutlinedInput-root":{ "&.Mui-focused fieldset":{ borderColor: 'rgb(197, 40, 61)'}}, "&.label.Mui-focused":{color: 'rgb(197, 40, 61)',}
+        }}
+      margin="normal"
       required
       fullWidth
       id="email"
@@ -83,39 +100,77 @@ async function runDBCallAsync(url) {
     />
 
     <TextField
+    sx={{backgroundColor: 'white', borderRadius: 1, "&.MuiOutlinedInput-root":{ "&.Mui-focused fieldset":{ borderColor: 'rgb(197, 40, 61)'}}, "&.label.Mui-focused":{color: 'rgb(197, 40, 61)',}
+        }}
       margin="normal"
       required
       fullWidth
       name="confirmEmail"
-      label="Confirm your email"
+      label="Confirm your Email"
       type="email"
       id="confirmEmail"
       autoComplete="current-email"
       ></TextField>
 
     <TextField
+   sx={{backgroundColor: 'white', borderRadius: 1, "&.MuiOutlinedInput-root":{ "&.Mui-focused fieldset":{ borderColor: 'rgb(197, 40, 61)'}}, "&.label.Mui-focused":{color: 'rgb(197, 40, 61)',}
+        }}
       margin="normal"
       required
       fullWidth
       name="pass"
-      label="Pass"
+      label="Password"
       type="password"
       id="pass"
       autoComplete="current-password"
       ></TextField>
 
       <TextField
-      margin="normal"
+      sx={{backgroundColor: 'white', borderRadius: 1, 
+        "& .MuiOutlinedInput-root":{
+          "& fieldset":{
+            borderColor: '#fafafafa'
+          },
+          "&: hover fieldset": {
+            borderColor: 'rgb(197, 40, 61)'
+          },
+          "&.Mui-focused fieldset": { 
+            borderColor: 'rgb(197, 40, 61)'
+          }
+        },
+        "& .MuiInputLabel-root.Mui.focsed":{
+          color: 'rgb(197, 40, 61)'
+        }
+        }}
+      margin="normal"s
       required
       fullWidth
       name="confirmPass"
-      label="confirm password"
+      label="Confirm Password"
       type="password"
       id="confirmPass"
       autoComplete="current-password"
       ></TextField>
 
       <TextField
+      sx={{
+      backgroundColor: "white",
+      borderRadius: 1,
+      "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+      borderColor: "#ccc",
+      },
+      "&:hover fieldset": {
+      borderColor: "rgb(197, 40, 61)",
+      },
+      "&.Mui-focused fieldset": {
+      borderColor: "rgb(197, 40, 61)",
+      },
+      },
+      "& .MuiInputLabel-root.Mui-focused": {
+       color: "rgb(197, 40, 61)",
+      },
+      }}
       margin="normal"
       required
       fullWidth
@@ -127,6 +182,8 @@ async function runDBCallAsync(url) {
       ></TextField>
 
       <TextField
+     sx={{backgroundColor: 'white', borderRadius: 1, "&.MuiOutlinedInput-root":{ "&.Mui-focused fieldset":{ borderColor: 'rgb(197, 40, 61)'}}, "&.label.Mui-focused":{color: 'rgb(197, 40, 61)',}
+        }}
       margin="normal"
       required
       fullWidth
@@ -137,13 +194,7 @@ async function runDBCallAsync(url) {
       autoComplete="current-telephoneNumber"
       ></TextField>
 
- <FormControlLabel
-      control={<Checkbox value="remember" sx={{ color: 'rgb(197, 40, 61)', '&.Mui-checked': { color: 'rgb(255, 200, 87)'} }} />}
-      label="Remember me"
-></FormControlLabel>
-
-
-
+ 
     <Button
       type="submit"
       fullWidth
@@ -152,6 +203,13 @@ async function runDBCallAsync(url) {
     >
       Create Account
     </Button>
+
+    <Typography variant = "body2" sx={{ textAlign: "center", color: "white", mt: 1  }}
+    >
+      Log in <Link href="/newregister" style={{color: '#FFC857'}}> Here</Link>
+
+    </Typography>
+
     </Box>
   </Box>
 </Container>

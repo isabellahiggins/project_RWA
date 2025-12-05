@@ -101,8 +101,8 @@ async function runDBCallAsync(url) {
 
 
     <FormControlLabel
-      control={<Checkbox value="remember" sx={{ color: 'rgb(197, 40, 61)', '&.Mui-checked': { color: '#255F85'} }} />}
-      label="Remember me" sx={{ color: 'rgb(197, 40, 61)' }}
+      control={<Checkbox value="remember" sx={{ color: 'rgb(197, 40, 61)', '&.Mui-checked': { color: '#FFC857'} }} />}
+      label="Remember me" sx={{ color: 'white' }}
     ></FormControlLabel>
 
     <Button
@@ -111,10 +111,15 @@ async function runDBCallAsync(url) {
       variant="contained"
       sx={{ mt: 3, mb: 2  , bgcolor: 'rgb(197, 40, 61)' }}
     >
-
       Sign In
-
     </Button>
+
+    <Typography variant = "body2" sx={{ textAlign: "center", color: "white", mt: 1  }}
+    >
+      Not signed up yet? <Link href="/newregister" style={{color: '#FFC857'}}> Create an account</Link>
+
+    </Typography>
+
 
     
 

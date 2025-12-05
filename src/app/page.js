@@ -10,6 +10,10 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+//images
+import Image from 'next/image';
+import { Typography } from '@mui/material';
+
 
 //main function for the main, all code goes here
 export default function Home() {
@@ -53,53 +57,40 @@ async function runDBCallAsync(url) {
   return (
 
     <Container maxWidth="sm">
-
     <Box sx={{ height: '100vh' }} >
 
+      <img src="/images/mcdonaldlogo.png" alt="logo" width={80} height={80}/>
+      <Typography component="h1" variant="h5" sx={{ color: 'rgb(197, 40, 61)' }}>
+       Sign In Below!
+      </Typography>
 
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, border: '1px solid rgb(197, 40, 61)', borderRadius: '6px', p: 2, backgroundColor: 'transparent' }} >
 
     <TextField
-
-      margin="normal"
-
+      margin="normal" 
       required
-
       fullWidth
-
       id="email"
-
       label="Email Address"
-
       name="email"
-
       autoComplete="email"
-
       autoFocus
-
+      color="error"
     />
 
     <TextField
-
       margin="normal"
-
       required
-
       fullWidth
-
       name="pass"
-
       label="Pass"
-
       type="pass"
-
       id="pass"
-
       autoComplete="current-password"
-
+      color = "error"
     />
 
-    
+
     <FormControlLabel
       control={<Checkbox value="remember" sx={{ color: 'rgb(197, 40, 61)', '&.Mui-checked': { color: 'rgb(255, 200, 87)'} }} />}
       label="Remember me"
@@ -109,7 +100,7 @@ async function runDBCallAsync(url) {
       type="submit"
       fullWidth
       variant="contained"
-      sx={{ mt: 3, mb: 2  ,bgcolor: 'rgb(197, 40, 61)' }}
+      sx={{ mt: 3, mb: 2  , bgcolor: 'rgb(197, 40, 61)' }}
     >
 
       Sign In
@@ -127,4 +118,5 @@ async function runDBCallAsync(url) {
   ); // end return
 
 }
+        
 

@@ -10,6 +10,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+
 //images
 import Image from 'next/image';
 import { Typography } from '@mui/material';
@@ -22,9 +23,8 @@ export default function Home() {
   //prevent defalt function call is to make sure browser doesn't refresh the page
   event.preventDefault();
 
-  //get data from form and store it into const dara
+  //get data from form and store it into const data
   const data = new FormData(event.currentTarget);
-
 
 //data.get to get the email and pass variables from the form data
    let email = data.get('email')
@@ -55,8 +55,11 @@ async function runDBCallAsync(url) {
 //html code
   return (
 
-    <Container maxWidth="sm">
+    <Container maxWidth="sm"
+     sx={{ backgroundColor: "#FFF8F0", minHeight: '100vh'}}
+    >
     <Box sx={{ height: '100vh' }} >
+      
 
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
       <img src="/images/mcdonaldlogo.png" alt="logo" width={80} height={80}/>
@@ -109,15 +112,12 @@ async function runDBCallAsync(url) {
       type="submit"
       fullWidth
       variant="contained"
-      sx={{ mt: 3, mb: 2  , bgcolor: 'rgb(197, 40, 61)' }}
-    >
+      sx={{ mt: 3, mb: 2  , bgcolor: 'rgb(197, 40, 61)' }}>
       Sign In
     </Button>
 
-    <Typography variant = "body2" sx={{ textAlign: "center", color: "white", mt: 1  }}
-    >
+    <Typography variant = "body2" sx={{ textAlign: "center", color: "white", mt: 1  }}>
       Not signed up yet? <Link href="/newregister" style={{color: '#FFC857'}}> Create an account</Link>
-
     </Typography>
 
 

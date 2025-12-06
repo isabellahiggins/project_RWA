@@ -68,11 +68,12 @@ async function runDBCallAsync(url) {
 //html code
   return (
 
-    <Container maxWidth="sm">
+    <Container maxWidth="sm"
+    sx={{ backgroundColor: "#FFF8F0", minHeight: '100vh'}}>
     <Box sx={{ height: '100vh' }} >
       {message && <Alert severity={messageType}>{message}</Alert>}
   
-   <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+   <Box sx={{ display: 'flex', alignItems: 'center', gap: 3}}>
       <img src="/images/mcdonaldlogo.png" alt="logo" width={80} height={80}/>
 
 
@@ -87,8 +88,12 @@ async function runDBCallAsync(url) {
 
 
     <TextField 
-    sx={{backgroundColor: 'white', borderRadius: 1, "&.MuiOutlinedInput-root":{ "&.Mui-focused fieldset":{ borderColor: 'rgb(197, 40, 61)'}}, "&.label.Mui-focused":{color: 'rgb(197, 40, 61)',}
-        }}
+      sx={{
+      backgroundColor: "white", borderRadius: 1,"& .MuiOutlinedInput-root": {"& fieldset": {borderColor: "#ccc",},
+      "&:hover fieldset": {borderColor: "rgb(197, 40, 61)"},
+      "&.Mui-focused fieldset": {borderColor: "rgb(197, 40, 61)"},},
+      "& .MuiInputLabel-root.Mui-focused": {color: "rgb(197, 40, 61)",},
+      }}
       margin="normal"
       required
       fullWidth
@@ -100,8 +105,12 @@ async function runDBCallAsync(url) {
     />
 
     <TextField
-    sx={{backgroundColor: 'white', borderRadius: 1, "&.MuiOutlinedInput-root":{ "&.Mui-focused fieldset":{ borderColor: 'rgb(197, 40, 61)'}}, "&.label.Mui-focused":{color: 'rgb(197, 40, 61)',}
-        }}
+      sx={{
+      backgroundColor: "white", borderRadius: 1,"& .MuiOutlinedInput-root": {"& fieldset": {borderColor: "#ccc",},
+      "&:hover fieldset": {borderColor: "rgb(197, 40, 61)"},
+      "&.Mui-focused fieldset": {borderColor: "rgb(197, 40, 61)"},},
+      "& .MuiInputLabel-root.Mui-focused": {color: "rgb(197, 40, 61)",},
+      }}
       margin="normal"
       required
       fullWidth
@@ -113,8 +122,12 @@ async function runDBCallAsync(url) {
       ></TextField>
 
     <TextField
-   sx={{backgroundColor: 'white', borderRadius: 1, "&.MuiOutlinedInput-root":{ "&.Mui-focused fieldset":{ borderColor: 'rgb(197, 40, 61)'}}, "&.label.Mui-focused":{color: 'rgb(197, 40, 61)',}
-        }}
+      sx={{
+      backgroundColor: "white", borderRadius: 1,"& .MuiOutlinedInput-root": {"& fieldset": {borderColor: "#ccc",},
+      "&:hover fieldset": {borderColor: "rgb(197, 40, 61)"},
+      "&.Mui-focused fieldset": {borderColor: "rgb(197, 40, 61)"},},
+      "& .MuiInputLabel-root.Mui-focused": {color: "rgb(197, 40, 61)",},
+      }}
       margin="normal"
       required
       fullWidth
@@ -126,23 +139,13 @@ async function runDBCallAsync(url) {
       ></TextField>
 
       <TextField
-      sx={{backgroundColor: 'white', borderRadius: 1, 
-        "& .MuiOutlinedInput-root":{
-          "& fieldset":{
-            borderColor: '#fafafafa'
-          },
-          "&: hover fieldset": {
-            borderColor: 'rgb(197, 40, 61)'
-          },
-          "&.Mui-focused fieldset": { 
-            borderColor: 'rgb(197, 40, 61)'
-          }
-        },
-        "& .MuiInputLabel-root.Mui.focsed":{
-          color: 'rgb(197, 40, 61)'
-        }
-        }}
-      margin="normal"s
+      sx={{
+      backgroundColor: "white", borderRadius: 1,"& .MuiOutlinedInput-root": {"& fieldset": {borderColor: "#ccc",},
+      "&:hover fieldset": {borderColor: "rgb(197, 40, 61)"},
+      "&.Mui-focused fieldset": {borderColor: "rgb(197, 40, 61)"},},
+      "& .MuiInputLabel-root.Mui-focused": {color: "rgb(197, 40, 61)",},
+      }}
+      margin="normal"
       required
       fullWidth
       name="confirmPass"
@@ -154,22 +157,10 @@ async function runDBCallAsync(url) {
 
       <TextField
       sx={{
-      backgroundColor: "white",
-      borderRadius: 1,
-      "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-      borderColor: "#ccc",
-      },
-      "&:hover fieldset": {
-      borderColor: "rgb(197, 40, 61)",
-      },
-      "&.Mui-focused fieldset": {
-      borderColor: "rgb(197, 40, 61)",
-      },
-      },
-      "& .MuiInputLabel-root.Mui-focused": {
-       color: "rgb(197, 40, 61)",
-      },
+      backgroundColor: "white", borderRadius: 1,"& .MuiOutlinedInput-root": {"& fieldset": {borderColor: "#ccc",},
+      "&:hover fieldset": {borderColor: "rgb(197, 40, 61)"},
+      "&.Mui-focused fieldset": {borderColor: "rgb(197, 40, 61)"},},
+      "& .MuiInputLabel-root.Mui-focused": {color: "rgb(197, 40, 61)",},
       }}
       margin="normal"
       required
@@ -182,8 +173,12 @@ async function runDBCallAsync(url) {
       ></TextField>
 
       <TextField
-     sx={{backgroundColor: 'white', borderRadius: 1, "&.MuiOutlinedInput-root":{ "&.Mui-focused fieldset":{ borderColor: 'rgb(197, 40, 61)'}}, "&.label.Mui-focused":{color: 'rgb(197, 40, 61)',}
-        }}
+     sx={{
+      backgroundColor: "white", borderRadius: 1,"& .MuiOutlinedInput-root": {"& fieldset": {borderColor: "#ccc",},
+      "&:hover fieldset": {borderColor: "rgb(197, 40, 61)"},
+      "&.Mui-focused fieldset": {borderColor: "rgb(197, 40, 61)"},},
+      "& .MuiInputLabel-root.Mui-focused": {color: "rgb(197, 40, 61)",},
+      }}
       margin="normal"
       required
       fullWidth
@@ -206,7 +201,7 @@ async function runDBCallAsync(url) {
 
     <Typography variant = "body2" sx={{ textAlign: "center", color: "white", mt: 1  }}
     >
-      Log in <Link href="/newregister" style={{color: '#FFC857'}}> Here</Link>
+      Log in <Link href="/login" style={{color: '#FFC857'}}> Here</Link>
 
     </Typography>
 

@@ -1,19 +1,74 @@
 'use client';
 
-//MUI framework imports that let us use components
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
-//MUI import for the image list
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import {ThemeProvider } from '@mui/material/styles';
+
+import { createTheme } from '@mui/material/styles';
+import { green, purple } from '@mui/material/colors';
+import { useState, useEffect } from 'react'
 
 
+export default function Page() {
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+        fetch('http://localhost:3000/api/products')
+          .then((res) => res.json())
+          .then((data) => {
+            setData(data)
+          })
+  }, [])
+
+   if (!data) return <p>Loading</p>
+
+  const theme = createTheme({
+        palette: {
+          secondary: {
+            main: green[500],
+          },
+        },
+  });
+
+  return (
+        <ThemeProvider theme={theme}>
+        <Container component="main"  maxWidth="xs">
+
+           <div style={{fontSize: '40px'}} > Our Menu</div>
+            <div>
+
+          {
+            data.map((item, i) => (
+              <div style={{padding: '20px'}} key={i} >
+
+                Unique ID: {item._id}
+                <br></br>
+                {item.pname} - {item.price}
+                <br></br>
+                {item.description}
+                <br></br>
+                <img src={`/${item.imageLink}`} alt={"product image"} width="100" height="100" />
+                <Button variant="outlined"> Add to cart </Button>
+              </div>
+            ))
+          }
+        </div>
+
+        </Container>
+        </ThemeProvider>
+
+
+  );
+
+}

@@ -11,11 +11,14 @@ export async function GET(req, res) {
   console.log(email);
   console.log(pass);
 
+  let valid = false;
+
  //connect to database
 
   const { MongoClient } = require('mongodb');
   const url = 'mongodb://root:example@localhost:27017/';
   const client = new MongoClient(url);
+  const bcrypt = require("bcrypt");
   const dbName = 'app'; // database name
 
   await client.connect();
@@ -24,24 +27,28 @@ export async function GET(req, res) {
   const collection = db.collection('login'); // collection name
 
   //check email and pass of user
-  const findResult = await collection.find({"username": email, "pass": pass}).toArray();
+  const findResult = await collection.find({"username": email}).toArray();
   console.log('Found documents =>', findResult);
 
-  let valid = false
-  if(findResult.length >0 ){
-          valid = true;
-          console.log("login valid")
-          
-          //Session
-          const collection = db.collection('sessions');
-          var myobj = { username: email, acctype: findResult[0].acctype };
-          const addUserSession = await collection.insertOne(myobj);
-          console.log("user added to session database");
-
-  } else {
-        valid = false;
-        console.log("login invalid")
+  if(findResult.length == 0){
+    console.log("Email not found");
+    return Response.json({ "data":"false"})
   }
+
+  const hashPassword = bcrypt.compareSync(pass, findResult[0].pass);
+
+  if(!hashPassword){
+    console.log("Incorrect password. Please try again.");
+    return Response.json({data: false});
+  }
+
+  valid = true
+  console.log("login valid.");
+
+  //add user to session collection
+  const sessionCollection = db.collection('sessions');
+  await sessionCollection.deleteMany({}); //clear other sessions
+  await sessionCollection.insertOne({ username: email, acctype: findResult[0].acctype });
 
  //========================================================== 
  //  at the end of the process we need to send something back.

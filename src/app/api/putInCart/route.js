@@ -36,7 +36,7 @@ export async function GET(req, res) {
 
   const usernameFromSession = sessionUserData[0].username;
 
-  var myobj = { pname: pname, price: price, imageLink: image, username: usernameFromSession};
+  var myobj = { pname: pname, price: Number(price), imageLink: image, username: usernameFromSession};
   const insertResult = await collection.insertOne(myobj);
 
  //==========================================================

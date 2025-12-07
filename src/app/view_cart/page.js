@@ -8,6 +8,10 @@ import Button from '@mui/material/Button';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import {useState, useEffect} from 'react';
+import Container from '@mui/material/Container';
+import Link from '@mui/material/Link'
+import Box from '@mui/material/Box';
+
 
 export default function page(){
     const [data, setData ] = useState(null);
@@ -38,8 +42,18 @@ export default function page(){
 
 
   return (
-    <div>
-    {data.map((item, i) => (
+    <Container maxWidth="sm"
+    sx={{ backgroundColor: "#FFF8F0", minHeight: '100vh'}}>
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+      <img src="/images/mcdonaldlogo.png" alt="logo" width={80} height={80}/>
+
+      <Typography component="h1" variant="h3" sx={{ color: 'rgb(197, 40, 61)' }}>
+         View your cart below
+      </Typography>
+    </Box>
+        
+        <Box sx={{ mt: 1, border: '2px solid rgba(197, 40, 61)', borderRadius: '6px', p: 2, backgroundColor:'#481D24', alignItems: 'center'}} >
+        {data.map((item, i) => (
     <Card sx={{ maxWidth: 345 }} key={i}>
       <CardActionArea>
         <CardMedia
@@ -60,13 +74,19 @@ export default function page(){
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={() => removeFromCart(item._id)}>
+        <Button size="small" sx={{ color: "#FFC857" }} onClick={() => removeFromCart(item._id)}>
           Remove from Cart
         </Button>
       </CardActions>
     </Card>
-    ))}
-    </div>
+    ))}</Box>
+
+    <Link href="/checkout" variant="body2" sx={{ mt: 2, color: 'rgb(197, 40, 61)'}}>
+      <Button variant="outlined"   sx={{ mt: 3, mb: 2  , bgcolor: 'rgb(197, 40, 61)', color: 'white', borderColor: 'rgb(197, 40, 61)'}}> Checkout Here! </Button> 
+    </Link>
+    </Container>
+
+    
     );
    
 }

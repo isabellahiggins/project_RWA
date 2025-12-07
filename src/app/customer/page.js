@@ -78,7 +78,12 @@ export default function Page() {
               </div>
             ))
           }
+
+          <Link href="/view_cart" variant="body2" sx={{ mt: 2, color: 'rgb(197, 40, 61)'}}>
+          <Button variant="outlined"   sx={{ mt: 3, mb: 2  , bgcolor: 'rgb(197, 40, 61)', color: 'white', borderColor: 'rgb(197, 40, 61)'}}> View Cart </Button> 
+          </Link> 
 </Box>
+        
         </Container>
         </ThemeProvider>
 

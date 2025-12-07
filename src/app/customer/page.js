@@ -22,21 +22,30 @@ import { useState, useEffect } from 'react'
 
 export default function Page() {
   const [data, setData] = useState(null)
+  const [weather, setWeather] = useState(null)
 
   useEffect(() => {
         fetch('http://localhost:3000/api/products')
           .then((res) => res.json())
           .then((data) => {
             setData(data)
-          })
+          });
+
+          fetch("http://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=855e02874fca416169a372b2860b243e&units=metric")
+          .then((res) => res.json())
+          .then((data) => {
+            setWeather(data);
+            console.log("Weather data: "  + data);
+          });
   }, [])
 
   function putInCart(name, imageLink, price){
     console.log("Adding product to the cart: " + name + " " + imageLink + " " + price);
-    fetch(`http://localhost:3000/api/putInCart?pname=${name}&imageLink=${imageLink}&price=${price}`);
+    fetch(`https://localhost:3000/api/putInCart?pname=${name}&imageLink=${imageLink}&price=${price}`);
   }
 
    if (!data) return <p>Loading</p>
+   if(!weather || !weather.list) return <p>Loading weather data</p>
 
   const theme = createTheme({
         palette: {
@@ -60,6 +69,12 @@ export default function Page() {
             </Typography>
             </Box>
 
+    <Box sx={{ backgroundColor: "#FFC857", borderRadius: '6px', textAlign: 'center'}}>
+    <Typography component ="h6" variant='h6' sx={{color: "#481D24"}}>
+      Weather in Dublin: {weather.list[0].main.temp} °C, {weather.list[0].weather[0].description}
+    </Typography>
+
+    </Box>
     <Box sx={{ mt: 1, border: '2px solid rgba(197, 40, 61)', borderRadius: '6px', p: 2, backgroundColor:'#481D24' }} >
         <Typography component="h4" variant="h5" sx={{ color: '#FFC857' }}>
             Our Products
@@ -89,5 +104,4 @@ export default function Page() {
 
 
   );
-
 }

@@ -9,10 +9,15 @@ export async function GET(req){
 
     await client.connect();
     const db = client.db(dbName);
+
     const collection = db.collection('shopping_cart'); // collection name
 
-    const username = "sample@test.com";
-    const itemsInCart = await collection.find({username: username}).toArray();
+    const sessionCollection = db.collection('sessions');
+    const sessionUserData = await sessionCollection.find({}).limit(1).toArray();
+    const usernameFromSession = sessionUserData[0].username;
+
+    //get users cart items
+    const itemsInCart = await collection.find({username: usernameFromSession}).toArray();
     console.log('Items in cart =>', itemsInCart);
 
     return Response.json(itemsInCart);

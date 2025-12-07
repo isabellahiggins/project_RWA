@@ -27,11 +27,17 @@ export async function GET(req, res) {
   const findResult = await collection.find({"username": email, "pass": pass}).toArray();
   console.log('Found documents =>', findResult);
 
-
   let valid = false
   if(findResult.length >0 ){
           valid = true;
           console.log("login valid")
+          
+          //Session
+          const collection = db.collection('sessions');
+          var myobj = { username: email, acctype: findResult[0].acctype };
+          const addUserSession = await collection.insertOne(myobj);
+          console.log("user added to session database");
+
   } else {
         valid = false;
         console.log("login invalid")

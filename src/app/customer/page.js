@@ -43,32 +43,37 @@ export default function Page() {
 
   return (
         <ThemeProvider theme={theme}>
-        <Container component="main"  maxWidth="xs">
+        <Container maxWidth="sm"
+            sx={{ backgroundColor: "#FFF8F0", minHeight: '100vh'}}
+        >
 
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
             <img src="/images/mcdonaldlogo.png" alt="logo" width={80} height={80}/>
 
             <Typography component="h1" variant="h3" sx={{ color: 'rgb(197, 40, 61)' }}>
-                Welcome Back!
+                Take a look at our Menu
             </Typography>
             </Box>
 
-
+    <Box sx={{ mt: 1, border: '2px solid rgba(197, 40, 61)', borderRadius: '6px', p: 2, backgroundColor:'#481D24' }} >
+        <Typography component="h4" variant="h5" sx={{ color: '#FFC857' }}>
+            Our Products
+        </Typography>
+    
           {
             data.map((item, i) => (
               <div style={{padding: '20px'}} key={i} >
-
-                {item.name} <br></br>
-                {item.price}
+                <Typography component="h5" sx={{fontWeight: 'bold', color: 'white'}}>{item.name} {item.price}</Typography>
                 <br></br>
-                {item.description}
+                <img src={`/${item.imageLink}`} alt={"product image"} width="100" height="100" style={{ borderRadius: '8px' }}/>
                 <br></br>
-                <img src={`/${item.imageLink}`} alt={"product image"} width="100" height="100" />
-                <Button variant="outlined"> Add to cart </Button>
+                <Typography component="h5" sx={{color: 'rgba(139, 126, 128, 1)'}}> {item.description} </Typography>
+                <br></br>
+                <Button variant="outlined"  sx={{ mt: 3, mb: 2  , bgcolor: 'rgb(197, 40, 61)', color: 'white', borderColor: 'rgb(197, 40, 61)'}}> Add to cart </Button>
               </div>
             ))
           }
-
+</Box>
         </Container>
         </ThemeProvider>
 

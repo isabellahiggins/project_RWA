@@ -45,16 +45,21 @@ export default function Page() {
         <ThemeProvider theme={theme}>
         <Container component="main"  maxWidth="xs">
 
-           <div style={{fontSize: '40px'}} > Our Menu</div>
-            <div>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+            <img src="/images/mcdonaldlogo.png" alt="logo" width={80} height={80}/>
+
+            <Typography component="h1" variant="h3" sx={{ color: 'rgb(197, 40, 61)' }}>
+                Welcome Back!
+            </Typography>
+            </Box>
+
 
           {
             data.map((item, i) => (
               <div style={{padding: '20px'}} key={i} >
 
-                Unique ID: {item._id}
-                <br></br>
-                {item.pname} - {item.price}
+                {item.name} <br></br>
+                {item.price}
                 <br></br>
                 {item.description}
                 <br></br>
@@ -63,7 +68,6 @@ export default function Page() {
               </div>
             ))
           }
-        </div>
 
         </Container>
         </ThemeProvider>

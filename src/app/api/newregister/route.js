@@ -23,7 +23,8 @@ export async function GET(req) {
   console.log("Sent telephoneNumber" + tel);
   console.log("Sent address" + address);
 
-
+  
+//validation 
 if(email !== confirmEmail){
   return Response.json({ success: false, message: "Incorrect Email" });
 }
@@ -32,7 +33,7 @@ if(pass != confirmPass){
   return Response.json({ success: false, message: "Incorrect Password" });
 }
 
-//if user enters an email already used
+//connect to database
   const url = "mongodb://root:example@localhost:27017/";
   const client = new MongoClient(url);
   await client.connect();
@@ -40,16 +41,23 @@ if(pass != confirmPass){
   const db = client.db(dbName);
   const collection = db.collection("login");
 
+  //check if user exists
   const userExists = await collection.findOne({ username: email });
-
   if(userExists){
     return Response.json({ success: false, message: "Email already registered" });
   }
 
+  const bcrypt = require("bcrypt");
+  const saltRounds = 10;
+
+  //generate hash from the text password
+  const hashPass = bcrypt.hashSync(pass, saltRounds);
+  console.log("Hashed password: " + hashPass);
+
   //Create new user
   const newUser = {
     username: email,
-    pass: pass,
+    pass: hashPass,
     acctype: "customer",
     telephone: tel,
     address: address

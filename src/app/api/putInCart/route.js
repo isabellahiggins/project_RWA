@@ -10,6 +10,8 @@ export async function GET(req, res) {
   const { searchParams } = new URL(req.url)
 
   const pname = searchParams.get('pname')
+  const price = searchParams.get('price')
+  const image = searchParams.get('imageLink')
 
 
   console.log(pname);
@@ -34,7 +36,7 @@ export async function GET(req, res) {
 
   const usernameFromSession = sessionUserData[0].username;
 
-  var myobj = { pname: pname, username: usernameFromSession};
+  var myobj = { pname: pname, price: price, imageLink: image, username: usernameFromSession};
   const insertResult = await collection.insertOne(myobj);
 
  //==========================================================

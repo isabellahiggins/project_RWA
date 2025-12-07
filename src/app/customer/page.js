@@ -31,9 +31,9 @@ export default function Page() {
           })
   }, [])
 
-  function putInCart(name){
-    console.log("Adding product to the cart: " + name );
-    fetch(`http://localhost:3000/api/putInCart?pname=${name}`)
+  function putInCart(name, imageLink, price){
+    console.log("Adding product to the cart: " + name + " " + imageLink + " " + price);
+    fetch(`http://localhost:3000/api/putInCart?pname=${name}&imageLink=${imageLink}&price=${price}`);
   }
 
    if (!data) return <p>Loading</p>
@@ -74,7 +74,7 @@ export default function Page() {
                 <br></br>
                 <Typography component="h5" sx={{color: 'rgba(139, 126, 128, 1)'}}> {item.description} </Typography>
                 <br></br>
-                <Button variant="outlined" onClick={() => putInCart(item.name)}   sx={{ mt: 3, mb: 2  , bgcolor: 'rgb(197, 40, 61)', color: 'white', borderColor: 'rgb(197, 40, 61)'}}> Add to cart </Button>
+                <Button variant="outlined" onClick={() => putInCart(item.name, item.imageLink, item.price)}   sx={{ mt: 3, mb: 2  , bgcolor: 'rgb(197, 40, 61)', color: 'white', borderColor: 'rgb(197, 40, 61)'}}> Add to cart </Button>
               </div>
             ))
           }
